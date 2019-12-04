@@ -11,7 +11,7 @@ import {UserInfoService} from './services/user-info/user-info.service';
 export class AppComponent implements OnInit {
 
   user = null;
-  title = 'webapp';
+  title = 'webApp';
 
   constructor(public _authService: AuthService, private _router: Router, private _userInfoService: UserInfoService) {}
 
