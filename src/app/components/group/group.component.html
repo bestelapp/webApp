@@ -1,0 +1,15 @@
+<div class="pt-5">
+  <div class="header">
+    <h3 class="mb-0">All Groups</h3>
+    <h5 class="text-muted" *ngIf="groups.length == 0">no groups to display</h5>
+  </div>
+  <div class="card mt-md-3" *ngFor="let group of groups">
+    <div class="card-header">
+      <h5 class="card-title">{{group.name}}</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Number of users: {{group['users'].length}}</p>
+      <a class="btn btn-primary" [routerLink]="[group.id]">Go to group page</a>
+    </div>
+  </div>
+</div>

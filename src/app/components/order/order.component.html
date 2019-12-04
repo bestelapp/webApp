@@ -1,0 +1,23 @@
+<div class="pt-5">
+  <div class="header">
+    <h3 class="mb-0">All Orders</h3>
+    <h5 class="text-muted" *ngIf="orders.length == 0">no orders to display</h5>
+  </div>
+  <div class="row">
+    <div class="col-md-6" *ngFor="let order of orders">
+      <div class="card mt-md-3">
+        <div class="card-body">
+          <h5 class="card-title">User: {{order.user.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Products</h6>
+          <ul class="list-group list-group-flush" *ngFor="let product of order.products">
+            <li class="list-group-item">
+              {{product.name}}
+            </li>
+          </ul>
+          <p class="card-text text-muted mt-md-3" *ngIf="order.claimUser!=null">Claimed by: {{order.claimUser.name}}</p>
+          <button class="btn btn-primary mt-md-3" *ngIf="order.claimUser==null && order.user.name!=loggedInUser.name" type="button" (click)="claimOrder(order.id)">claim this order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
