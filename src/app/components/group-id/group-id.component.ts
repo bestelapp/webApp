@@ -11,7 +11,7 @@ import {GroupService} from '../../services/group/group.service';
 export class GroupIdComponent implements OnInit, OnDestroy {
 
   private routeSub: Subscription;
-  id;
+  id: number;
   group = {};
 
   constructor(private route: ActivatedRoute, private _group: GroupService) { }

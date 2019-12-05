@@ -20,7 +20,7 @@ export class GroupCreateComponent implements OnInit {
     if (this.name && this.name !== '') {
       const user = this._userInfoService.getUser();
       if (user) {
-        this._group.create({name: this.name, users: [user]}).subscribe(
+        this._group.create({name: this.name, owner: user}).subscribe(
           res => {
             if (res !== null) {
               this.error = '';
