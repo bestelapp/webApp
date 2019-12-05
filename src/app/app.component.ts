@@ -9,7 +9,6 @@ import {UserInfoService} from './services/user-info/user-info.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
   user = null;
   title = 'webApp';
 

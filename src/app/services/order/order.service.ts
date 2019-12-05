@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { Url } from '../url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-
-  private _url = 'http://localhost:8080';
+  private _url = Url.url;
 
   constructor(private http: HttpClient) { }
 
