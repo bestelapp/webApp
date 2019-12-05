@@ -25,7 +25,13 @@ export class GroupIdComponent implements OnInit, OnDestroy {
 
   getGroup() {
     this._group.getById(this.id).subscribe(
-      res => this.group = res,
+      res => {
+        if (res) {
+          this.group = res
+        } else {
+          this.group = {}
+        }
+      },
       () => this.group = {}
     );
   }

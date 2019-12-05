@@ -47,4 +47,14 @@ export class GroupUserAddComponent implements OnInit {
     );
   }*/
 
+  addUser() {
+    this._group.addUsersToGroup(this.id, {id: 1, name: 'asdf'}).subscribe(
+      res => {
+        if (res) {
+          this.getGroup();
+        }
+      }
+    );
+  }
+
 }

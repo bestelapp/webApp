@@ -1,7 +1,7 @@
 <div class="pt-5">
   <div *ngIf="group !== {}">
     <div class="header">
-      <h3 class="mb-0">Group: {{group['name']}}</h3>
+      <h3 class="mb-0">Group: {{group.name}}</h3>
     </div>
     <div class="row">
       <div class="col-md-6">
@@ -12,10 +12,10 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <a class="align-middle">{{group['owner'].name}}</a>
+                <a class="align-middle">{{group.owner?.name}}</a>
                 <h6 class="float-right mt-1">owner</h6>
             </li>
-            <li class="list-group-item" *ngFor="let user of group['users']">
+            <li class="list-group-item" *ngFor="let user of group.users">
               <a class="align-middle">{{user.name}}</a>
               <button type="button" class="float-right btn btn-danger btn-sm">Delete</button>
             </li>
