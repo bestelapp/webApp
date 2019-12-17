@@ -9,12 +9,12 @@
         <div class="card-body">
           <h5 class="card-title">User: {{order.user.name}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Products</h6>
-          <ul class="list-group list-group-flush" *ngFor="let product of order.products?">
+          <ul class="list-group list-group-flush" *ngFor="let product of order.products">
             <li class="list-group-item">
-              {{product.name?}}
+              {{product.name}}
             </li>
           </ul>
-          <p class="card-text text-muted mt-md-3" *ngIf="order.claimUser!=null">Claimed by: {{order.claimUser?.name}}</p>
+          <p class="card-text text-muted mt-md-3" *ngIf="order.claimUser!=null">Claimed by: {{order.claimUser.name}}</p>
           <button class="btn btn-primary mt-md-3" *ngIf="order.claimUser==null && order.user.name!=loggedInUser.name" type="button" (click)="claimOrder(order.id)">claim this order</button>
         </div>
       </div>
