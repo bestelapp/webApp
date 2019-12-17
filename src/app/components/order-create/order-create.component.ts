@@ -9,7 +9,7 @@ import {OrderService} from '../../services/order/order.service';
 })
 export class OrderCreateComponent implements OnInit {
   @Input() productName = '';
-  products = [];
+  products: Array<any> = [];
 
   constructor(private _order: OrderService, private _userInfoService: UserInfoService) { }
 

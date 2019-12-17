@@ -8,9 +8,9 @@ import {AuthService} from '../../services/auth/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Input() username;
-  @Input() password;
-  error;
+  @Input() username: string;
+  @Input() password: string;
+  error: string;
 
   constructor(private _auth: AuthService, private router: Router) { }
 

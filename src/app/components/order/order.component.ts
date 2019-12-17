@@ -8,9 +8,9 @@ import {UserInfoService} from '../../services/user-info/user-info.service';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  orders = [];
+  orders: Array<any> = [];
   @Input() claimUser = '';
-  loggedInUser;
+  loggedInUser: { id: any; name: any; };
 
   constructor(private _order: OrderService, private _userInfoService: UserInfoService) { }
 

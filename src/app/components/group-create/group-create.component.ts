@@ -8,8 +8,8 @@ import {UserInfoService} from '../../services/user-info/user-info.service';
   styleUrls: ['./group-create.component.css']
 })
 export class GroupCreateComponent implements OnInit {
-  @Input() name;
-  error;
+  @Input() name: string;
+  error: string;
 
   constructor(private _group: GroupService, private _userInfoService: UserInfoService) { }
 

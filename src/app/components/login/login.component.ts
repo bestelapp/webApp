@@ -9,8 +9,8 @@ import {AppComponent} from '../../app.component';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @Input() username;
-  @Input() password;
+  @Input() username: string;
+  @Input() password: string;
   error: string;
 
   constructor(private _auth: AuthService, private router: Router, private appComponent: AppComponent) { }

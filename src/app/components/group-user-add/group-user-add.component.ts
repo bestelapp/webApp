@@ -11,10 +11,10 @@ import {Subscription} from 'rxjs';
 export class GroupUserAddComponent implements OnInit {
 
   private routeSub: Subscription;
-  id;
-  group = {};
-  users = [];
-  @Input() name;
+  id: number;
+  group: any = {};
+  users: any = [];
+  @Input() name: string;
 
   constructor(private route: ActivatedRoute, private _group: GroupService) { }
 
