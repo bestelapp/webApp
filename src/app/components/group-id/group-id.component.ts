@@ -12,7 +12,7 @@ export class GroupIdComponent implements OnInit, OnDestroy {
 
   private routeSub: Subscription;
   id: number;
-  group: {};
+  group: any = {};
 
   constructor(private route: ActivatedRoute, private _group: GroupService) { }
 
