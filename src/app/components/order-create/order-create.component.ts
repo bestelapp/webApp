@@ -28,9 +28,25 @@ export class OrderCreateComponent implements OnInit {
 
   addProduct() {
     if (this.productName !== '') {
-      const p = {name: this.productName};
-      this.products.push(p);
-      this.productName = '';
+      if (this.products.length !== 0) {
+        let count = 0;
+        this.products.forEach(product => {
+          if (product.name === this.productName) {
+            product.amount++;
+            this.productName = '';
+            count++;
+          }
+        });
+        if (count === 0) {
+          const p = {name: this.productName, amount: 1};
+          this.products.push(p);
+          this.productName = '';
+        }
+      } else {
+        const p = {name: this.productName, amount: 1};
+        this.products.push(p);
+        this.productName = '';
+      }
     }
   }
 }

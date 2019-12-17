@@ -13,7 +13,7 @@ export class GroupUserAddComponent implements OnInit {
   private routeSub: Subscription;
   id: number;
   group: any = {};
-  users: any = [];
+  users: Array<any> = [];
   @Input() name: string;
 
   constructor(private route: ActivatedRoute, private _group: GroupService) { }

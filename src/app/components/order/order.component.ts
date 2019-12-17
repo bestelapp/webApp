@@ -40,11 +40,11 @@ export class OrderComponent implements OnInit {
       });
   }
 
-  getAllProducts(productList) {
+  getAllProducts(productList: Array<any>) {
     const products = [];
     for (const p in productList) {
       if (productList.hasOwnProperty(p)) {
-        products.push({name: productList[p].name});
+        products.push({name: productList[p].name, amount: productList[p].amount});
       }
     }
     return products;
