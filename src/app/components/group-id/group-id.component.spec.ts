@@ -37,7 +37,7 @@ describe('GroupIdComponent', () => {
 
   it('should set group', () => {
     component.id = 1;
-    const group = {id: 1, name: 'group', users: {id: 1, name: 'user'}};
+    const group = {id: 1, name: 'group', owner: {id: 1, name: 'user'}, users: [{id: 1, name: 'user'}]};
     spyOn(groupService, 'getById').and.returnValue(of(group));
     component.ngOnInit();
     expect(component.group).toEqual(group);

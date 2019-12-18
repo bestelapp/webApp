@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GroupUserAddComponent } from './group-user-add.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('GroupUserAddComponent', () => {
   let component: GroupUserAddComponent;
@@ -10,7 +11,7 @@ describe('GroupUserAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, FormsModule],
       declarations: [ GroupUserAddComponent ]
     })
     .compileComponents();
