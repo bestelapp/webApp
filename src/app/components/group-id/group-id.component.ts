@@ -36,6 +36,16 @@ export class GroupIdComponent implements OnInit, OnDestroy {
     );
   }
 
+  removeUser(user: object) {
+    this._group.removeUserFromGroup(this.id, user).subscribe(
+      (res: boolean) => {
+        if (res) {
+          this.getGroup();
+        }
+      }
+    );
+  }
+
   ngOnDestroy() {
     this.routeSub.unsubscribe();
   }

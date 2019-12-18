@@ -14,11 +14,11 @@ export class OrderService {
     return this.http.get<any>(this._url + '/order/all');
   }
 
-  claimOrder(data) {
+  claimOrder(data: object) {
     return this.http.post(this._url + '/order/claim', data);
   }
 
-  create(order) {
+  create(order: object) {
     return this.http.post(this._url + '/order/create', order);
   }
 }

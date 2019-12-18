@@ -1,54 +1,84 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {GroupService} from '../../services/group/group.service';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-group-user-add',
   templateUrl: './group-user-add.component.html',
   styleUrls: ['./group-user-add.component.css']
 })
-export class GroupUserAddComponent implements OnInit {
+export class GroupUserAddComponent implements OnInit, OnDestroy {
 
   private routeSub: Subscription;
   id: number;
-  group: any = {};
-  users: Array<any> = [];
+  group: {id: number, name: string, owner: object, users: any[]} = null;
+  users: any[] = [];
+  usersUnfiltered: any[] = [];
   @Input() name: string;
 
-  constructor(private route: ActivatedRoute, private _group: GroupService) { }
+  constructor(private route: ActivatedRoute, private _group: GroupService, private _user: UserService) { }
 
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {
       this.id = params.id;
       this.getGroup();
+      this.getAllUsers();
     });
+  }
+  getAllUsers() {
+    this._user.getAllUsers().subscribe(
+      res => {
+        if (res) {
+          this.users = res;
+          this.usersUnfiltered = res;
+        } else {
+          this.users = [];
+        }
+      },
+      () => this.users = []
+    );
   }
 
   getGroup() {
     this._group.getById(this.id).subscribe(
       res => {
-        this.group = res;
+        if (res) {
+          this.group = res;
+        } else {
+          this.group = null;
+        }
       },
-      err => console.log(err)
+      () => this.group = null
     );
   }
 
   searchUsers() {
-    return null;
+    const filtered: any[] = [];
+    this.usersUnfiltered.some((u: {name: string}) => {
+      if (u.name.includes(this.name)) {
+        filtered.push(u);
+      }
+    });
+    this.users = filtered;
   }
 
-  /*searchUsers() {
-    this._group.getAllUsersByName(this.id, this.name).subscribe(
-      res => {
-        this.users = res.users;
-      },
-      err => console.log(err)
+  isInGroupUsers(name: string) {
+    const nameList: any[] = [];
+    this.group.users.forEach(
+      (u: {name: string}) => {
+        nameList.push(u.name);
+      }
     );
-  }*/
+    if (nameList.includes(name)) {
+      return true;
+    }
+    return false;
+  }
 
-  addUser() {
-    this._group.addUsersToGroup(this.id, {id: 1, name: 'asdf'}).subscribe(
+  addUser(user: object) {
+    this._group.addUsersToGroup(this.id, user).subscribe(
       res => {
         if (res) {
           this.getGroup();
@@ -57,4 +87,7 @@ export class GroupUserAddComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
+  }
 }

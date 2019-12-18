@@ -1,6 +1,7 @@
-<div class="pt-5">
+<div class="pt-5" *ngIf="group !== null">
   <div class="header">
     <h3 class="mb-0">Group: {{group.name}}</h3>
+    <a [routerLink]="['../../' + id]">go back to group</a>
   </div>
   <div class="row mt-3">
     <div class="col">
@@ -8,14 +9,13 @@
         <div class="card-header card-title">
           <h5 class="card-title float-left">Search for users</h5>
           <form class="form-inline float-right">
-            <input class="form-control mr-sm-2" type="search" placeholder="Name" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchUsers()">Search</button>
+            <input class="form-control mr-sm-2" type="search" name="name" [(ngModel)]="name" placeholder="Name" aria-label="Search" (ngModelChange)="searchUsers()">
           </form>
         </div>
         <ul class="list-group list-group-flush" *ngFor="let user of users">
           <li class="list-group-item">
             <a class="align-middle">{{user.name}}</a>
-            <button type="button" class="float-right btn btn-success btn-sm">Add</button>
+            <button *ngIf="!isInGroupUsers(user.name)" type="button" class="float-right btn btn-success btn-sm" (click)="addUser(user)">Add</button>
           </li>
         </ul>
       </div>

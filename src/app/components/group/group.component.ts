@@ -7,7 +7,7 @@ import {GroupService} from '../../services/group/group.service';
   styleUrls: ['./group.component.css']
 })
 export class GroupComponent implements OnInit {
-  groups: Array<any> = [];
+  groups: any[] = [];
 
   constructor(private _groupService: GroupService) { }
 
