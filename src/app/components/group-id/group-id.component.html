@@ -9,7 +9,7 @@
         <div class="card mt-3">
           <div class="card-header card-title">
             <h5 class="card-title float-left">Users in this group</h5>
-            <a type="button" class="float-right btn btn-success btn-sm" [routerLink]="['../add/' + id]">Add User</a>
+            <a type="button" class="float-right btn btn-primary btn-sm" [routerLink]="['../add/' + id]">Add User</a>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item" *ngFor="let user of group.users">
@@ -22,4 +22,5 @@
       </div>
     </div>
   </div>
+  <app-order [group]="group"></app-order>
 </div>

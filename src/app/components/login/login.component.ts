@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
           if (res != null) {
             localStorage.setItem('token', res.token);
             this.appComponent.ngOnInit();
-            this.router.navigate(['order']).then(() => {});
+            this.router.navigate(['group']).then(() => {});
           } else {
             this.error = 'login failed';
           }

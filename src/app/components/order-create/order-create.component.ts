@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs';
 import {UserInfoService} from '../../services/user-info/user-info.service';
 import {OrderService} from '../../services/order/order.service';
 
@@ -7,20 +9,26 @@ import {OrderService} from '../../services/order/order.service';
   templateUrl: './order-create.component.html',
   styleUrls: ['./order-create.component.css']
 })
-export class OrderCreateComponent implements OnInit {
+export class OrderCreateComponent implements OnInit, OnDestroy {
+
+  private routeSub: Subscription;
   @Input() productName = '';
   products: Array<any> = [];
+  id: number;
 
-  constructor(private _order: OrderService, private _userInfoService: UserInfoService) { }
+  constructor(private route: ActivatedRoute, private _order: OrderService, private _userInfoService: UserInfoService) { }
 
   ngOnInit() {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.id = params.id;
+    });
   }
 
   onSubmitForm() {
     const u = this._userInfoService.getUser();
     if (this.products.length !== 0) {
       const order = { user: {name: u.name, id: u.id}, products: this.products};
-      this._order.create(order).subscribe(() => {
+      this._order.create(order, this.id).subscribe(() => {
         this.products = [];
       });
     }
@@ -48,5 +56,9 @@ export class OrderCreateComponent implements OnInit {
         this.productName = '';
       }
     }
+  }
+
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
   }
 }

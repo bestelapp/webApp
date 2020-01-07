@@ -18,7 +18,7 @@ export class OrderService {
     return this.http.post(this._url + '/order/claim', data);
   }
 
-  create(order: object) {
-    return this.http.post(this._url + '/order/create', order);
+  create(order: object, groupId: number) {
+    return this.http.post(this._url + '/order/create/' + groupId, order);
   }
 }

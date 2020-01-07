@@ -28,13 +28,7 @@ export const routes: Routes = [
     data: { requiresLogin: false }
   },
   {
-    path: 'order',
-    component: OrderComponent,
-    data: { requiresLogin: true },
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'order/create',
+    path: 'order/create/:id',
     component: OrderCreateComponent,
     data: { requiresLogin: true },
     canActivate: [AuthGuard]

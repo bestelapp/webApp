@@ -8,15 +8,27 @@ import {UserInfoService} from '../../services/user-info/user-info.service';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  orders: Array<any> = [];
-  @Input() claimUser = '';
+  @Input() group: any;
+  orders: Array<any>;
   loggedInUser: { id: any; name: any; };
 
   constructor(private _order: OrderService, private _userInfoService: UserInfoService) { }
 
   ngOnInit() {
-    this.getAllOrders();
     this.loggedInUser = this._userInfoService.getUser();
+  }
+
+  isInUserGroup() {
+    const nameList: any[] = [];
+    this.group.users.forEach(
+      (u: {name: string}) => {
+        nameList.push(u.name);
+      }
+    );
+    if (nameList.includes(this.loggedInUser.name)) {
+      return true;
+    }
+    return false;
   }
 
   getAllOrders() {
