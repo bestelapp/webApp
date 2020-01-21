@@ -9,6 +9,7 @@ import {GroupCreateComponent} from './components/group-create/group-create.compo
 import {GroupIdComponent} from './components/group-id/group-id.component';
 import {GroupComponent} from './components/group/group.component';
 import {GroupUserAddComponent} from './components/group-user-add/group-user-add.component';
+import { OrdersClaimedComponent } from './components/orders-claimed/orders-claimed.component';
 
 export const routes: Routes = [
   {
@@ -54,6 +55,12 @@ export const routes: Routes = [
   {
     path: 'group/add/:id',
     component: GroupUserAddComponent,
+    data: { requiresLogin: true },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user/orders-claimed',
+    component: OrdersClaimedComponent,
     data: { requiresLogin: true },
     canActivate: [AuthGuard]
   }
