@@ -14,11 +14,20 @@ export class OrderService {
     return this.http.get<any>(this._url + '/order/all');
   }
 
+  getAllByClaimUser(id: number) {
+    return this.http.get<any[]>(this._url + '/order/getAllByClaimUser/' + id);
+  }
+
   claimOrder(data: object) {
     return this.http.post(this._url + '/order/claim', data);
   }
 
-  create(order: object) {
-    return this.http.post(this._url + '/order/create', order);
+  closeOrder(data: object) {
+    console.log(data);
+    return this.http.post(this._url + '/order/close', data);
+  }
+
+  create(order: object, groupId: number) {
+    return this.http.post(this._url + '/order/create/' + groupId, order);
   }
 }

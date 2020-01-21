@@ -17,6 +17,7 @@ import {GroupCreateComponent} from '../group-create/group-create.component';
 import {GroupIdComponent} from '../group-id/group-id.component';
 import {GroupUserAddComponent} from '../group-user-add/group-user-add.component';
 import {Location} from '@angular/common';
+import { OrdersClaimedComponent } from '../orders-claimed/orders-claimed.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -41,7 +42,8 @@ describe('LoginComponent', () => {
         GroupComponent,
         GroupCreateComponent,
         GroupIdComponent,
-        GroupUserAddComponent
+        GroupUserAddComponent,
+        OrdersClaimedComponent
       ],
       providers: [
         AppComponent,
@@ -73,7 +75,7 @@ describe('LoginComponent', () => {
     component.login();
     tick();
     expect(localStorage.getItem('token')).toEqual('JWTToken');
-    expect(location.path()).toEqual('/order');
+    expect(location.path()).toEqual('/group');
     expect(authService.loginUser).toHaveBeenCalledTimes(1);
     expect(appComponent.ngOnInit).toHaveBeenCalledTimes(1);
     localStorage.removeItem('token');

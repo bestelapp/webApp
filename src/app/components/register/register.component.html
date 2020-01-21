@@ -14,7 +14,7 @@
             <label for="password">Password</label>
             <input id="password" class="form-control rounded-0" type="password" name="password" [(ngModel)]="password" placeholder="password" required>
           </div>
-          <div style="color: darkred">{{error}}</div>
+          <div id="error" style="color: darkred">{{error}}</div>
           <button (click)="register()" class="btn btn-primary float-right" type="button">Register</button>
           <div class="form-group mt-4">
             Already registered? Login <a [routerLink]="['/login']">here</a>

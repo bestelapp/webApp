@@ -15,7 +15,7 @@ export class GroupService {
   }
 
   getById(id: number) {
-    return this.http.get<{id: number, name: string, owner: object, users: any[]}>(this._url + '/group/' + id);
+    return this.http.get<{id: number, name: string, owner: object, orders: any[], users: any[]}>(this._url + '/group/' + id);
   }
 
   create(group: object) {

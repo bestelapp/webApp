@@ -14,7 +14,7 @@ export class GroupIdComponent implements OnInit, OnDestroy {
   id: number;
   group: any = {};
 
-  constructor(private route: ActivatedRoute, private _group: GroupService) { }
+  constructor(private route: ActivatedRoute, private _group: GroupService) {}
 
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params => {

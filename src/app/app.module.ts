@@ -18,6 +18,7 @@ import { GroupCreateComponent } from './components/group-create/group-create.com
 import { GroupIdComponent } from './components/group-id/group-id.component';
 import { GroupComponent } from './components/group/group.component';
 import { GroupUserAddComponent } from './components/group-user-add/group-user-add.component';
+import { OrdersClaimedComponent } from './components/orders-claimed/orders-claimed.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { GroupUserAddComponent } from './components/group-user-add/group-user-ad
     GroupCreateComponent,
     GroupIdComponent,
     GroupComponent,
-    GroupUserAddComponent
+    GroupUserAddComponent,
+    OrdersClaimedComponent
   ],
   imports: [
     AppRoutingModule,
