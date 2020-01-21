@@ -1,4 +1,4 @@
-<div class="pt-5" *ngIf="group">
+<div class="pt-5 mb-5" *ngIf="group">
   <div class="header">
     <h3 class="mb-0">All Orders</h3>
     <a *ngIf="isInUserGroup()" type="button" class="btn btn-primary btn-sm mt-2 text-white" [routerLink]="['../../order/create/' + group.id]">Add Order</a>
