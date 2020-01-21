@@ -4,6 +4,7 @@ import { OrderComponent } from './order.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {OrderService} from '../../services/order/order.service';
 import {UserInfoService} from '../../services/user-info/user-info.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('OrderComponent', () => {
   let component: OrderComponent;
@@ -14,7 +15,7 @@ describe('OrderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [ OrderComponent ],
       providers: [
         OrderService,

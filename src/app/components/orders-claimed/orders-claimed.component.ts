@@ -19,6 +19,7 @@ export class OrdersClaimedComponent implements OnInit {
     this.loggedInUser = this._userInfoService.getUser();
     this.getAllByClaimUser();
   }
+
   getAllByClaimUser() {
     this._order.getAllByClaimUser(this.loggedInUser.id).subscribe(
       res => {

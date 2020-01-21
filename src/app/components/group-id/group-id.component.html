@@ -1,24 +1,22 @@
-<div class="pt-5">
-  <div *ngIf="group !== {}">
-    <div class="header">
-      <h3 class="mb-0">Group: {{group.name}}</h3>
-      <a [routerLink]="['../']">go back to groups</a>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card mt-3">
-          <div class="card-header card-title">
-            <h5 class="card-title float-left">Users in this group</h5>
-            <a type="button" class="float-right btn btn-primary btn-sm" [routerLink]="['../add/' + id]">Add User</a>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let user of group.users">
-              <a class="align-middle">{{user.name}}</a>
-              <button *ngIf="user.name !== group.owner?.name" type="button" (click)="removeUser(user)" class="float-right btn btn-danger btn-sm">Delete</button>
-              <h6 *ngIf="user.name === group.owner?.name" class="float-right mt-1">owner</h6>
-            </li>
-          </ul>
+<div class="pt-5" *ngIf="group">
+  <div class="header">
+    <h3 class="mb-0">Group: {{group.name}}</h3>
+    <a [routerLink]="['../']">go back to groups</a>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mt-3">
+        <div class="card-header card-title">
+          <h5 class="card-title float-left">Users in this group</h5>
+          <a type="button" class="float-right btn btn-primary btn-sm" [routerLink]="['../add/' + id]">Add User</a>
         </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let user of group.users">
+            <a class="align-middle">{{user.name}}</a>
+            <button *ngIf="user.name !== group.owner?.name" type="button" (click)="removeUser(user)" class="float-right btn btn-danger btn-sm">Delete</button>
+            <h6 *ngIf="user.name === group.owner?.name" class="float-right mt-1">owner</h6>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

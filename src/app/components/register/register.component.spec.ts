@@ -16,6 +16,7 @@ import {GroupCreateComponent} from '../group-create/group-create.component';
 import {GroupIdComponent} from '../group-id/group-id.component';
 import {GroupUserAddComponent} from '../group-user-add/group-user-add.component';
 import {LoginComponent} from '../login/login.component';
+import { OrdersClaimedComponent } from '../orders-claimed/orders-claimed.component';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -39,7 +40,8 @@ describe('RegisterComponent', () => {
         GroupComponent,
         GroupCreateComponent,
         GroupIdComponent,
-        GroupUserAddComponent
+        GroupUserAddComponent,
+        OrdersClaimedComponent
       ]
     })
     .compileComponents();
